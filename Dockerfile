@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
 # ARG BASE_IMAGE=nvidia/cuda:10.1-base-ubuntu18.04
 FROM ${BASE_IMAGE} as base
 
@@ -17,3 +17,4 @@ RUN python3 -m pip --no-cache-dir install --upgrade pip setuptools wheel && \
     python3 -m pip --no-cache-dir install jax jaxlib && \
     python3 -m pip --no-cache-dir install --upgrade jaxlib==0.1.67+cuda101 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
     python3 -m pip list
+RUN git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git
