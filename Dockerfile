@@ -1,4 +1,5 @@
-ARG BASE_IMAGE=nvidia/cuda:10.1-base-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
+# ARG BASE_IMAGE=nvidia/cuda:10.1-base-ubuntu18.04
 FROM ${BASE_IMAGE} as base
 
 FROM base as builder
