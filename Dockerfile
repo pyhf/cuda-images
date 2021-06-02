@@ -3,7 +3,7 @@ ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
 FROM ${BASE_IMAGE} as base
 
 ARG PYHF_VERSION=0.6.1
-# CUDA_VERSION is already set in the base image
+# CUDA_VERSION already exists as ENV variable in the base image
 # hadolint ignore=DL3003,SC2102
 RUN apt-get -qq -y update && \
     apt-get -qq -y install --no-install-recommends \
