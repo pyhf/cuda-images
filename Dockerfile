@@ -13,8 +13,13 @@ RUN apt-get -qq -y update && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
+# Try 0.1.57 as for 0.1.67
+# Starting training...
+# 2021-06-01 01:58:28.798857: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_blas.cc:226] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
+# 2021-06-01 01:58:28.798884: F external/org_tensorflow/tensorflow/compiler/xla/service/gpu/gemm_algorithm_picker.cc:113] Check failed: stream->parent()->GetBlasGemmAlgorithms(&algorithms)
+# Aborted (core dumped)
+    # python3 -m pip --no-cache-dir install jax jaxlib && \
 RUN python3 -m pip --no-cache-dir install --upgrade pip setuptools wheel && \
-    python3 -m pip --no-cache-dir install jax jaxlib && \
-    python3 -m pip --no-cache-dir install --upgrade jaxlib==0.1.67+cuda101 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
+    python3 -m pip --no-cache-dir install --upgrade jax==0.2.7 jaxlib==0.1.57+cuda101 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
     python3 -m pip list
 RUN git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git
