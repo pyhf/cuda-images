@@ -1,5 +1,4 @@
 ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
-# Thanks Anish (@trickarcher)
 FROM ${BASE_IMAGE} as base
 
 ARG PYHF_VERSION=0.6.1
@@ -25,4 +24,9 @@ RUN apt-get -qq -y update && \
     python3 -m pip list && \
     echo '' >> ~/.bashrc && \
     echo 'alias python=$(command -v python3)' >> ~/.bashrc
-RUN git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git
+
+WORKDIR /home/data
+ENV HOME /home
+
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
+CMD ["/bin/bash"]
