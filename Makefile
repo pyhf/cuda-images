@@ -9,7 +9,7 @@ image:
 	--build-arg BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04 \
 	--build-arg PYHF_VERSION=0.6.1 \
 	-t pyhf/cuda:jax-debug-local \
-	-t pyhf/cuda:0.6.1-cuda-111-jax-debug-local
+	-t pyhf/cuda:0.6.1-jax-cuda-111-debug-local
 	docker system prune -f
 
 image-cuda-101:
@@ -18,5 +18,5 @@ image-cuda-101:
 	-f Dockerfile \
 	--build-arg BASE_IMAGE=nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04 \
 	--build-arg PYHF_VERSION=0.5.4 \
-	-t pyhf/cuda:0.5.4-cuda-101-jax-debug-local
+	-t pyhf/cuda:0.5.4-jax-cuda-101-debug-local
 	docker system prune -f
