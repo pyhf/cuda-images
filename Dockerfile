@@ -1,4 +1,5 @@
-ARG BASE_IMAGE=nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+# ARG BASE_IMAGE=nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
 # ARG BASE_IMAGE=nvidia/cuda:10.1-base-ubuntu18.04
 FROM ${BASE_IMAGE} as base
 
@@ -19,7 +20,10 @@ RUN apt-get -qq -y update && \
 # 2021-06-01 01:58:28.798884: F external/org_tensorflow/tensorflow/compiler/xla/service/gpu/gemm_algorithm_picker.cc:113] Check failed: stream->parent()->GetBlasGemmAlgorithms(&algorithms)
 # Aborted (core dumped)
     # python3 -m pip --no-cache-dir install jax jaxlib && \
+    # python3 -m pip --no-cache-dir install --upgrade jax==0.2.7 jaxlib==0.1.57+cuda101 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
 RUN python3 -m pip --no-cache-dir install --upgrade pip setuptools wheel && \
-    python3 -m pip --no-cache-dir install --upgrade jax==0.2.7 jaxlib==0.1.57+cuda101 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
+    python3 -m pip --no-cache-dir install --upgrade jax jaxlib==0.1.67+cuda111 --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
     python3 -m pip list
-RUN git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git
+RUN git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git && \
+    echo '' >> ~/.bashrc && \
+    echo 'alias python=$(command -v python3)' >> ~/.bashrc
