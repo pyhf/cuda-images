@@ -33,3 +33,12 @@ To run (interactively) using GPUs on the host machine:
 
 ```
 docker run --rm -ti --gpus all pyhf/cuda:0.6.1-jax-cuda-11.1
+```
+
+## Tests
+
+To verify things are working on your host machine you can run
+
+```
+docker run --rm --gpus all -v $PWD:$PWD -w $PWD pyhf/cuda:0.6.1-jax-cuda-11.1-debug-local 'bash tests/test_jax.sh'
+```
