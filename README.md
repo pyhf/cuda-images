@@ -3,6 +3,8 @@
 
 [`pyhf`](https://pyhf.readthedocs.io/) Docker images built on the [NVIDIA CUDA enabled images](https://github.com/NVIDIA/nvidia-docker) for runtime use with the the NVIDIA Container Toolkit.
 
+**These images are meant to be used as base images for bespoke user application images to build on.**
+
 [![Docker Images](https://github.com/pyhf/cuda-images/actions/workflows/docker.yml/badge.svg?branch=main)](https://github.com/pyhf/cuda-images/actions/workflows/docker.yml?query=branch%3Amain)
 [![Docker Pulls](https://img.shields.io/docker/pulls/pyhf/cuda.svg)](https://hub.docker.com/r/pyhf/cuda/)
 
