@@ -95,18 +95,7 @@ jobs:
         run: echo ${{ steps.docker_build_test.outputs.digest }}
 
       - name: List built images
-        run: printenv && docker images
-
-      - name: Run test program
-        # Need to run not below PWD to have non-root write with GHA
-        run: >-
-          docker run --rm
-          pyhf/cuda:sha-${GITHUB_SHA::8}
-          'git clone https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git && \
-           nvidia-smi && \
-           cd nvidia-gpu-ml-library-test.git && \
-           python jax_detect_GPU.py && \
-           python jax_MNIST.py'
+        run: docker images
 
       - name: Build and publish to registry
         # every PR will trigger a push event on main, so check the push event is actually coming from main
