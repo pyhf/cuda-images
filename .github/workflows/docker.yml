@@ -95,7 +95,7 @@ jobs:
         run: echo ${{ steps.docker_build_test.outputs.digest }}
 
       - name: List built images
-        run: docker images
+        run: printenv && docker images
 
       - name: Run test program
         # Need to run not below PWD to have non-root write with GHA
