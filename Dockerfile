@@ -1,6 +1,9 @@
 ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
 FROM ${BASE_IMAGE} as base
 
+COPY .bash_profile /root/.bash_profile
+WORKDIR /home/data
+
 ARG PYHF_VERSION=0.6.1
 # CUDA_VERSION already exists as ENV variable in the base image
 # hadolint ignore=DL3003,SC2102
@@ -24,9 +27,6 @@ RUN apt-get -qq -y update && \
     python3 -m pip list && \
     echo '' >> ~/.bashrc && \
     echo 'alias python=$(command -v python3)' >> ~/.bashrc
-
-WORKDIR /home/data
-ENV HOME /home
 
 ENTRYPOINT ["/bin/bash", "-l", "-c"]
 CMD ["/bin/bash"]
