@@ -1,4 +1,5 @@
 ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+# Thanks Anish (@trickarcher)
 # ARG BASE_IMAGE=nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
 # ARG BASE_IMAGE=nvidia/cuda:10.1-base-ubuntu18.04
 FROM ${BASE_IMAGE} as base
