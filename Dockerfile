@@ -1,7 +1,6 @@
 ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
 FROM ${BASE_IMAGE} as base
 
-COPY .bash_profile /root/.bash_profile
 WORKDIR /home/data
 
 ARG PYHF_VERSION=0.6.1
@@ -25,6 +24,7 @@ RUN apt-get -qq -y update && \
     echo "jaxlib+cuda version: ${jaxlib_version}+cuda${cuda_version}" && \
     python3 -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html && \
     python3 -m pip list && \
+    ln --symbolic $(command -v python3) /usr/bin/python && \
     echo '' >> ~/.bashrc && \
     echo 'alias python=$(command -v python3)' >> ~/.bashrc
 

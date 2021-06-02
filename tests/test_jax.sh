@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [[ ! -d nvidia-gpu-ml-library-test ]];then
     git clone --depth 1 https://github.com/matthewfeickert/nvidia-gpu-ml-library-test.git
