@@ -14,6 +14,7 @@ RUN apt-get -qq -y update && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/* && \
     python3 -m pip --no-cache-dir install --upgrade pip setuptools wheel && \
+    python3 -m pip --no-cache-dir install pyhf[xmlio,contrib] && \
     python3 -m pip --no-cache-dir install --upgrade jax jaxlib && \
     export jaxlib_version=$(python3 -c 'import jaxlib; print(jaxlib.__version__)') && \
     export cuda_version=$(echo ${CUDA_VERSION} | cut -d . -f -2 | sed 's/\.//') && \
