@@ -4,12 +4,13 @@ FROM ${BASE_IMAGE} as base
 WORKDIR /home/data
 
 ARG PYHF_VERSION=0.6.1
+# Set PATH now to pickup virtualenv when it is unpacked here
+ENV PATH=/usr/local/venv/bin:"${PATH}"
 # CUDA_VERSION already exists as ENV variable in the base image
 # hadolint ignore=DL3003,SC2102
 RUN apt-get -qq -y update && \
     apt-get -qq -y install --no-install-recommends \
         python3 \
-        python3-pip \
         python3-dev \
         git && \
     apt-get -y autoclean && \
