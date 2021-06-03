@@ -33,7 +33,7 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=pyhf/cuda
-          VERSION=latest
+          VERSION=latest-${{ matrix.backend }}
           PYHF_VERSION=0.6.1
           CUDA_VERSION=11.1
           FULL_TAG=${PYHF_VERSION}-${{ matrix.backend }}-cuda-${CUDA_VERSION}
