@@ -4,7 +4,7 @@ FROM ${BASE_IMAGE} as base
 WORKDIR /home/data
 
 ARG PYHF_VERSION=0.6.1
-# Set PATH now to pickup virtualenv when it is unpacked here
+# Set PATH to pickup virtualenv when it is unpacked
 ENV PATH=/usr/local/venv/bin:"${PATH}"
 # CUDA_VERSION already exists as ENV variable in the base image
 # hadolint ignore=DL3003,SC2102
