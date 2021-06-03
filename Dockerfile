@@ -21,7 +21,6 @@ RUN apt-get -qq -y update && \
     python3 virtualenv.pyz /usr/local/venv && \
     rm virtualenv.pyz && \
     python -m pip --no-cache-dir install --upgrade pip setuptools wheel && \
-    python -m pip --no-cache-dir install virtualenv && \
     python -m pip --no-cache-dir install "pyhf[xmlio,contrib]==${PYHF_VERSION}" && \
     python -m pip --no-cache-dir install --upgrade jax jaxlib && \
     export jaxlib_version=$(python -c 'import jaxlib; print(jaxlib.__version__)') && \
