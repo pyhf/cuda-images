@@ -12,6 +12,7 @@ RUN apt-get -qq -y update && \
     apt-get -qq -y install --no-install-recommends \
         python3 \
         python3-dev \
+        curl \
         git && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
