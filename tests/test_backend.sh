@@ -25,8 +25,8 @@ function main() {
     elif [[ "${pyhf_backend_name}" =~ ^("pytorch"|"torch")$ ]]; then
         printf "\n# python torch_detect_GPU.py\n"
         python torch_detect_GPU.py
-        printf "\n# python torch_MNIST.py\n"
-        python torch_MNIST.py
+        printf "\n# python torch_MNIST.py --epochs 5\n"
+        python torch_MNIST.py --epochs 5
     fi
 }
 
