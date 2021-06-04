@@ -2,10 +2,10 @@ name: Docker Images
 
 on:
   push:
-    branches:
-    - main
-    tags:
-    - v*
+    # branches:
+    # - main
+    # tags:
+    # - v*
   pull_request:
     branches:
     - main
@@ -27,7 +27,7 @@ jobs:
         exclude:
           - backend: jax
             base-image: nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04
-          - backend: torch 
+          - backend: torch
             base-image: nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
 
     steps:
@@ -108,7 +108,7 @@ jobs:
 
       - name: Build and publish to registry
         # every PR will trigger a push event on main, so check the push event is actually coming from main
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'pyhf/cuda-images'
+        # if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'pyhf/cuda-images'
         id: docker_build_latest
         uses: docker/build-push-action@v2
         with:
