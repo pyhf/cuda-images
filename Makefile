@@ -14,10 +14,10 @@ image:
 	docker system prune -f
 
 image-torch:
-	docker pull nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+	docker pull nvidia/cuda:11.1-base-ubuntu20.04
 	docker build . \
 	-f Dockerfile \
-	--build-arg BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04 \
+	--build-arg BASE_IMAGE=nvidia/cuda:11.1-base-ubuntu20.04 \
 	--build-arg PYHF_VERSION=0.6.1 \
 	--build-arg PYHF_BACKEND=torch \
 	-t pyhf/cuda:0.6.1-torch-cuda-11.1-debug-local
