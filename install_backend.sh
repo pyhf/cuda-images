@@ -30,7 +30,7 @@ function main() {
     elif [[ "${pyhf_backend_name}" =~ ^("tensorflow"|"tf")$ ]]; then
         # TODO: Impliment
         # install_tensorflow_backend
-        echo "tensorflow"
+        exit 1
     fi
 }
 
