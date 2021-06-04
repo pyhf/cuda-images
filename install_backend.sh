@@ -16,10 +16,12 @@ function install_jax_backend {
 }
 
 function install_pytorch_backend {
+    local torch_version=1.8.1
     local cuda_version
 
     cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
-    python -m pip --no-cache-dir install torch==1.8.1+cu"${cuda_version}" --find-links https://download.pytorch.org/whl/torch_stable.html
+    echo "torch+cuda version: ${torch_version}+cu${cuda_version}"
+    python -m pip --no-cache-dir install torch=="${torch_version}+cu${cuda_version}" --find-links https://download.pytorch.org/whl/torch_stable.html
 }
 
 
