@@ -15,6 +15,16 @@ function install_jax_backend {
     python -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html
 }
 
+function install_pytorch_backend {
+    local torch_version=1.8.1
+    local cuda_version
+
+    cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
+    echo "torch+cuda version: ${torch_version}+cu${cuda_version}"
+    python -m pip --no-cache-dir install torch=="${torch_version}+cu${cuda_version}" --find-links https://download.pytorch.org/whl/torch_stable.html
+}
+
+
 function main() {
     # 1: pyhf backend name
 
@@ -26,9 +36,7 @@ function main() {
     if [[ "${pyhf_backend_name}" = "jax" ]]; then
         install_jax_backend
     elif [[ "${pyhf_backend_name}" =~ ^("pytorch"|"torch")$ ]]; then
-        # TODO: Impliment
-        # install_pytorch_backend
-        exit 1
+        install_pytorch_backend
     elif [[ "${pyhf_backend_name}" =~ ^("tensorflow"|"tf")$ ]]; then
         # TODO: Impliment
         # install_tensorflow_backend
