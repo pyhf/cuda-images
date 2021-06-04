@@ -15,6 +15,14 @@ function install_jax_backend {
     python -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html
 }
 
+function install_pytorch_backend {
+    local cuda_version
+
+    cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
+    python -m pip --no-cache-dir install torch==1.8.1+cu"${cuda_version}" --find-links https://download.pytorch.org/whl/torch_stable.html
+}
+
+
 function main() {
     # 1: pyhf backend name
 
