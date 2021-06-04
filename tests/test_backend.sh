@@ -23,6 +23,8 @@ function main() {
         printf "\n# python jax_MNIST.py\n"
         python jax_MNIST.py
     elif [[ "${pyhf_backend_name}" =~ ^("pytorch"|"torch")$ ]]; then
+        printf "\n# python -m pip --quiet install torchvision\n"
+        python -m pip --quiet install torchvision
         printf "\n# python torch_detect_GPU.py\n"
         python torch_detect_GPU.py
         printf "\n# python torch_MNIST.py --epochs 5\n"
