@@ -34,9 +34,7 @@ function main() {
     if [[ "${pyhf_backend_name}" = "jax" ]]; then
         install_jax_backend
     elif [[ "${pyhf_backend_name}" =~ ^("pytorch"|"torch")$ ]]; then
-        # TODO: Impliment
-        # install_pytorch_backend
-        exit 1
+        install_pytorch_backend
     elif [[ "${pyhf_backend_name}" =~ ^("tensorflow"|"tf")$ ]]; then
         # TODO: Impliment
         # install_tensorflow_backend
