@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        backend: [jax]
+        backend: [jax, torch]
 
     steps:
       - name: Checkout
