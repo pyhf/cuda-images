@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# CUDA_VERSION already exists as ENV variable in the base image
+
 function install_jax_backend {
     local jaxlib_version
     local cuda_version
