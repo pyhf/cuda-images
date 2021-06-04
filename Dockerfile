@@ -1,6 +1,8 @@
 ARG BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
 FROM ${BASE_IMAGE} as base
 
+SHELL [ "/bin/bash", "-c" ]
+
 WORKDIR /home/data
 
 ARG PYHF_VERSION=0.6.1
