@@ -23,12 +23,12 @@ jobs:
     strategy:
       matrix:
         backend: [jax, torch]
-        base-image: [nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04, nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04]
+        base-image: ["nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04", "nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04"]
         exclude:
           - backend: jax
-            base-image: nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04
+            base-image: "nvidia/cuda:11.1-cudnn8-runtime-ubuntu20.04"
           - backend: torch
-            base-image: nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+            base-image: "nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04"
 
     steps:
       - name: Checkout
