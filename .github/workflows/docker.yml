@@ -84,6 +84,8 @@ jobs:
           context: .
           file: Dockerfile
           tags: ${{ steps.prep.outputs.tags }}
+          build-args: |
+            PYHF_BACKEND=${{ matrix.backend }}
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
@@ -105,6 +107,8 @@ jobs:
         with:
           context: .
           file: Dockerfile
+          build-args: |
+            PYHF_BACKEND=${{ matrix.backend }}
           tags: |
             pyhf/cuda:latest-${{ matrix.backend }}
             pyhf/cuda:${{ steps.prep.outputs.full_tag }}
@@ -123,6 +127,8 @@ jobs:
         with:
           context: .
           file: Dockerfile
+          build-args: |
+            PYHF_BACKEND=${{ matrix.backend }}
           tags: ${{ steps.prep.outputs.tags }}
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
