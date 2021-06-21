@@ -18,7 +18,7 @@
 Example:
 
 ```
-docker pull pyhf/cuda:0.6.1-jax-cuda-11.1
+docker pull pyhf/cuda:0.6.2-jax-cuda-11.1
 ```
 
 ## Use
@@ -26,7 +26,7 @@ docker pull pyhf/cuda:0.6.1-jax-cuda-11.1
 To check that NVIDIA GPUS are being properly detected run
 
 ```
-docker run --rm --gpus all pyhf/cuda:0.6.1-jax-cuda-11.1 'nvidia-smi'
+docker run --rm --gpus all pyhf/cuda:0.6.2-jax-cuda-11.1 'nvidia-smi'
 ```
 
 and check if the [`nvidia-smi`](https://developer.nvidia.com/nvidia-system-management-interface) output appears correctly.
@@ -34,7 +34,7 @@ and check if the [`nvidia-smi`](https://developer.nvidia.com/nvidia-system-manag
 To run (interactively) using GPUs on the host machine:
 
 ```
-docker run --rm -ti --gpus all pyhf/cuda:0.6.1-jax-cuda-11.1
+docker run --rm -ti --gpus all pyhf/cuda:0.6.2-jax-cuda-11.1
 ```
 
 ## Tests
@@ -42,5 +42,5 @@ docker run --rm -ti --gpus all pyhf/cuda:0.6.1-jax-cuda-11.1
 To verify things are working on your host machine you can run
 
 ```
-docker run --rm --gpus all -v $PWD:$PWD -w $PWD pyhf/cuda:0.6.1-jax-cuda-11.1 'bash tests/test_backend.sh jax'
+docker run --rm --gpus all -v $PWD:$PWD -w $PWD pyhf/cuda:0.6.2-jax-cuda-11.1 'bash tests/test_backend.sh jax'
 ```
