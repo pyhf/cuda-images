@@ -7,10 +7,10 @@ image:
 	docker build . \
 	-f Dockerfile \
 	--build-arg BASE_IMAGE=nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04 \
-	--build-arg PYHF_VERSION=0.6.1 \
+	--build-arg PYHF_VERSION=0.6.2 \
 	--build-arg PYHF_BACKEND=jax \
 	-t pyhf/cuda:jax-debug-local \
-	-t pyhf/cuda:0.6.1-jax-cuda-11.1-debug-local
+	-t pyhf/cuda:0.6.2-jax-cuda-11.1-debug-local
 	docker system prune -f
 
 image-torch:
@@ -18,9 +18,9 @@ image-torch:
 	docker build . \
 	-f Dockerfile \
 	--build-arg BASE_IMAGE=nvidia/cuda:11.1-base-ubuntu20.04 \
-	--build-arg PYHF_VERSION=0.6.1 \
+	--build-arg PYHF_VERSION=0.6.2 \
 	--build-arg PYHF_BACKEND=torch \
-	-t pyhf/cuda:0.6.1-torch-cuda-11.1-debug-local
+	-t pyhf/cuda:0.6.2-torch-cuda-11.1-debug-local
 	docker system prune -f
 
 image-cuda-101:

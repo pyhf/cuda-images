@@ -40,7 +40,7 @@ jobs:
         run: |
           DOCKER_IMAGE=pyhf/cuda
           VERSION=latest-${{ matrix.backend }}
-          PYHF_VERSION=0.6.1
+          PYHF_VERSION=0.6.2
           CUDA_VERSION=11.1
           FULL_TAG=${PYHF_VERSION}-${{ matrix.backend }}-cuda-${CUDA_VERSION}
           REPO_NAME=${{github.repository}}
