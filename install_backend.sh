@@ -16,7 +16,7 @@ function install_jax_backend {
 }
 
 function install_pytorch_backend {
-    local torch_version=1.8.1
+    local torch_version=1.9.0
     local cuda_version
 
     cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
