@@ -5,7 +5,7 @@ SHELL [ "/bin/bash", "-c" ]
 
 WORKDIR /home/data
 
-ARG PYHF_VERSION=0.6.2
+ARG PYHF_VERSION=0.6.3
 ARG PYHF_BACKEND=jax
 # Set PATH to pickup virtualenv when it is unpacked
 ENV PATH=/usr/local/venv/bin:"${PATH}"
