@@ -9,7 +9,7 @@ function install_jax_backend {
     python -m pip --no-cache-dir install --upgrade jax jaxlib
     jaxlib_version=$(python -c 'import jaxlib; print(jaxlib.__version__)')
     # shellcheck disable=SC2153
-    cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
+    cuda_version=$(echo "${CUDA_VERSION}" | cut --delimiter . --fields -1)
     # Determine CuDNN version number
     CUDNN_MAJOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MAJOR' | awk '{print $NF}')"
     CUDNN_MINOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MINOR' | awk '{print $NF}')"
@@ -24,7 +24,7 @@ function install_pytorch_backend {
     local torch_version=1.9.0
     local cuda_version
 
-    cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
+    cuda_version=$(echo "${CUDA_VERSION}" | cut --delimiter . --fields -2 | sed 's/\.//')
     echo "torch+cuda version: ${torch_version}+cu${cuda_version}"
     python -m pip --no-cache-dir install torch=="${torch_version}+cu${cuda_version}" --find-links https://download.pytorch.org/whl/torch_stable.html
 }
