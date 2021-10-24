@@ -10,8 +10,11 @@ function install_jax_backend {
     jaxlib_version=$(python -c 'import jaxlib; print(jaxlib.__version__)')
     # shellcheck disable=SC2153
     cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
-    cudnn_version="805"
-    # cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep CUDNN_MAJOR --after-context 2
+    # Determine CuDNN version number
+    CUDNN_MAJOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MAJOR' | awk '{print $NF}')"
+    CUDNN_MINOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MINOR' | awk '{print $NF}')"
+    CUDNN_PATCHLEVEL="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_PATCHLEVEL' | awk '{print $NF}')"
+    cudnn_version="${CUDNN_MAJOR}${CUDNN_MINOR}${CUDNN_PATCHLEVEL}"
     echo "jaxlib version: ${jaxlib_version}"
     echo "jaxlib+cuda version: ${jaxlib_version}+cuda${cuda_version}.cudnn${cudnn_version}"
     python -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}.cudnn${cudnn_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html
