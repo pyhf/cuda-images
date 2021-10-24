@@ -10,9 +10,11 @@ function install_jax_backend {
     jaxlib_version=$(python -c 'import jaxlib; print(jaxlib.__version__)')
     # shellcheck disable=SC2153
     cuda_version=$(echo "${CUDA_VERSION}" | cut -d . -f -2 | sed 's/\.//')
+    cudnn_version="805"
+    # cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep CUDNN_MAJOR --after-context 2
     echo "jaxlib version: ${jaxlib_version}"
-    echo "jaxlib+cuda version: ${jaxlib_version}+cuda${cuda_version}"
-    python -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html
+    echo "jaxlib+cuda version: ${jaxlib_version}+cuda${cuda_version}.cudnn${cudnn_version}"
+    python -m pip --no-cache-dir install --upgrade jax jaxlib=="${jaxlib_version}+cuda${cuda_version}.cudnn${cudnn_version}" --find-links https://storage.googleapis.com/jax-releases/jax_releases.html
 }
 
 function install_pytorch_backend {
