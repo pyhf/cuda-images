@@ -11,9 +11,9 @@ function install_jax_backend {
     # shellcheck disable=SC2153
     cuda_version=$(echo "${CUDA_VERSION}" | cut --delimiter . --fields -1)
     # Determine CuDNN version number
-    CUDNN_MAJOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MAJOR' | awk '{print $NF}')"
-    CUDNN_MINOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_MINOR' | awk '{print $NF}')"
-    CUDNN_PATCHLEVEL="$(cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep '#define CUDNN_PATCHLEVEL' | awk '{print $NF}')"
+    CUDNN_MAJOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_version_v*.h | grep '#define CUDNN_MAJOR' | awk '{print $NF}')"
+    CUDNN_MINOR="$(cat /usr/include/x86_64-linux-gnu/cudnn_version_v*.h | grep '#define CUDNN_MINOR' | awk '{print $NF}')"
+    CUDNN_PATCHLEVEL="$(cat /usr/include/x86_64-linux-gnu/cudnn_version_v*.h | grep '#define CUDNN_PATCHLEVEL' | awk '{print $NF}')"
     cudnn_version="${CUDNN_MAJOR}${CUDNN_MINOR}${CUDNN_PATCHLEVEL}"
     echo "jaxlib version: ${jaxlib_version}"
     echo "jaxlib+cuda version: ${jaxlib_version}+cuda${cuda_version}.cudnn${cudnn_version}"
